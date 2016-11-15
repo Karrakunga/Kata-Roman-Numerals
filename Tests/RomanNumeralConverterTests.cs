@@ -4,26 +4,20 @@ using NUnit.Framework;
 namespace Tests
 {
     [TestFixture]
-    public class RomanNumeralConverterTests
+    class DecimalNumeralTests
     {
-        private RomanNumeralConverter _romanNumeralConverter;
-
-        [OneTimeSetUp]
-        public void GivenARomanNumeralConverter_WhenARomanNumeralIsConverted()
-        {
-            _romanNumeralConverter = new RomanNumeralConverter();
-        }
-
         [TestCase("I", 1)]
         [TestCase("II", 2)]
         [TestCase("III", 3)]
         [TestCase("IV", 4)]
         [TestCase("V", 5)]
-        public void ThenTheRomanNumeralIsConvertedToDecimalCorrectly(string romanNumeral, int expectedCalculatedValue)
+     
+        
+        public void TheRomanNumeralIsConvertedToDecimalCorrectly(string romanNumber, int expected)
         {
-            var actualCalculatedValue = _romanNumeralConverter.ConvertRomanNumeralToDecimal(romanNumeral);
-
-            Assert.That(actualCalculatedValue, Is.EqualTo(expectedCalculatedValue));
+            int actual = new RomanNumeralConverter().ConvertRomanNumeralToDecimal(romanNumber);
+            Assert.AreEqual(expected, actual);
         }
     }
 }
+
